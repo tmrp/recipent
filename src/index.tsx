@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+
+// base npx create-react-app config. Has not been touched
 
 ReactDOM.render(
   <React.StrictMode>

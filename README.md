@@ -1,8 +1,14 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Prepared with love for Acato.
+
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `yarn`
+
+Install the dependencies
 
 ### `yarn start`
 
@@ -42,3 +48,12 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+### 📦 Packages
+
+1. [Emotion](https://www.npmjs.com/package/emotion)
+2. [Axios](https://www.npmjs.com/package/axios)
+3. [dotenv](https://www.npmjs.com/package/dotenv)
+4. [react-lazyload](https://www.npmjs.com/package/react-lazyload)
+5. [Material-UI](https://www.npmjs.com/package/@material-ui/core)
+6. [Spoonacular (API)](https://spoonacular.com)
