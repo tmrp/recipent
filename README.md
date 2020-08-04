@@ -2,6 +2,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Prepared with love for Acato.
 
+[Demo](https://recipent.netlify.app)
+
 ## Available Scripts
 
 In the project directory, you can run:
