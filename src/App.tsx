@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 // The comments pertain the subject matter below the comment
 // Like this one pertains to "import styled from '@emotion/styled';" I'll be using styled components from emotion for most of my styling
 import styled from '@emotion/styled';
@@ -9,6 +9,8 @@ import { intolerances } from './data/intolerances.json';
 import AppWrapper from './components/app-wrapper';
 import RecipeCard from './components/recipe-card';
 import RecipeGrid from './components/recipe-grid';
+
+import { truncate } from './utils';
 
 // Import Material UI components
 // For the search form I am using the Autocomplete component library by Material UI. The reason being is that I can't make an autocomplete dropdown select form from scratch without spending about 12 hours researching and testing. This is something I am working on and very eager to learn!
@@ -62,6 +64,11 @@ const App = () => {
     setRecipes(data);
   };
 
+  // init
+  useMemo(() => {
+    setRecipes(data);
+  }, [data]);
+
   // I spent the most time of the project right here. Getting the 'right' values from the Material Ui Autocomplete took me a hot minute.
   const onChange = (e?: any, values?: any) => {
     // Here I needed to set the input to the value of the dietary intolerance. The value had commas between the multiple inputs. I had to remove the commas and the Spoonacular documentation required me to add a "+" after every input that followed.
@@ -70,7 +77,6 @@ const App = () => {
     getData();
     // I noticed that although the url came back with the right request and structure the data shown was not always correct and might be a little buggy. Maybe I'm requesting too much recipes as they are now limited to 100. I might be missing and I may have introduced a bug somewhere that I do not not of.
     e.preventDefault();
-    console.log('log the onchange values', values);
   };
   return (
     <AppWrapper>
@@ -92,6 +98,7 @@ const App = () => {
         <Autocomplete
           multiple
           id="tags-standard"
+          defaultValue={[intolerances[0]]}
           // Here I import the json data with the dietary intolerances
           options={intolerances}
           // Because the intolerances don't have a label, getOptionLabel is left to option
@@ -116,12 +123,13 @@ const App = () => {
         {!loading &&
           recipes.map((recipe: any) => (
             <RecipeCard
+              key={recipe.id}
               // List of recipe props
               recipeKey={recipe.id}
               // The api only shows the relative image url with no base url in the API. This had to be solved by combining the base url with Spoonacular's image url
               recipeImage={`https://spoonacular.com/recipeImages/${recipe.image}`}
               recipeImageAlt={recipe.title}
-              recipeTitle={recipe.title}
+              recipeTitle={truncate(recipe.title, 60)}
               recipeServings={recipe.servings}
               recipeTime={recipe.readyInMinutes}
               // Recipes go to an outside url
