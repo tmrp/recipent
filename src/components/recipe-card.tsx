@@ -4,10 +4,11 @@ import styled from '@emotion/styled';
 import LazyLoad from 'react-lazyload';
 
 const Card = styled.div`
+  position: relative;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 3px -2px,
     rgba(0, 0, 0, 0.14) 0px 3px 4px 0px, rgba(0, 0, 0, 0.12) 0px 1px 8px 0px;
-  /* height: 100%; */
+  height: 550px;
 `;
 
 const CardImage = styled.img`
@@ -19,6 +20,7 @@ const CardImage = styled.img`
 `;
 
 const CardTitle = styled.h3`
+  position: relative;
   font-size: 21px;
   color: #0a0a0a;
   margin: 5px;
@@ -29,13 +31,14 @@ const CardTitle = styled.h3`
 // I'm using CSS Grid for placing items on the recipe cards
 
 const CardInformation = styled.div`
+  bottom: 0;
+  right: 0;
+  left: 0;
+  position: absolute;
   margin: 5px;
   padding: 5px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 0.5fr;
-  position: relative;
-  object-fit: cover;
+  display: flex;
+  flex-direction: column;
 `;
 
 const RecipeInformation = styled.p`
@@ -53,6 +56,7 @@ const CardLink = styled.a`
 `;
 
 const CardButton = styled.button`
+  position: relative;
   background-color: #008bff;
   border-radius: 5px;
   color: #fff;
